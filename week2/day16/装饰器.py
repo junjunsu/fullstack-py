@@ -11,7 +11,7 @@ import time
 
 
 #装饰器函数:
-# 功能函数加参数
+# 功能函数加参数1
 def show_time(func):
     def inner(*x,**y): #内部定一个一个函数
         start = time.time()  #
