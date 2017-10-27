@@ -77,4 +77,4 @@ b = bar()
 b.send(None)# 等于next(b)
 b.send('eee')#也会执行,他会给yield前面变量赋值
 # 第一次send前,如果没有next,只能传一个send(None)
-# 先执行yield 后赋值
+# 先执行yield 后赋值11
