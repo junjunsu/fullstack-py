@@ -24,8 +24,8 @@ print(dict.keys()) #返回当前字典的键
 print(dict.values()) #返回当前字典的值
 print(dict.items()) #返回当前字典的键值对
 dict1 = {'name':'Lee','age':80,'user_info':{'time':'2015'}}
-print(list(dict1.items())) #返回当前字典的键值对 可以用list/tuple 去接收
-print(list(dict1.keys())) #返回当前字典的键 可以用list/tuple 去接收
+print(list(dict1.items()))  # 返回当前字典的键值对 可以用list/tuple 去接收
+print(list(dict1.keys()))  # 返回当前字典的键 可以用list/tuple 去接收
 print(list(dict1.values())) #返回当前字典的值 可以用list/tuple 去接收
 
 

@@ -1,0 +1,50 @@
+2017-10-30 15:28:37,871-root-DEBUG-logger debug msg
+2017-10-30 15:28:37,871-root-INFO-logger info msg
+2017-10-30 15:28:37,871-root-WARNING-logger warning msg
+2017-10-30 15:28:37,871-root-ERROR-logger error msg
+2017-10-30 15:28:37,871-root-CRITICAL-logger critical msg
+2017-10-30 15:29:30,866 - root - DEBUG - logger debug message
+2017-10-30 15:29:30,867 - root - INFO - logger info message
+2017-10-30 15:29:30,867 - root - WARNING - logger warning message
+2017-10-30 15:29:30,867 - root - ERROR - logger error message
+2017-10-30 15:29:30,867 - root - CRITICAL - logger critical message
+2017-10-30 15:29:39,226-root-DEBUG-logger debug msg
+2017-10-30 15:29:39,226-root-INFO-logger info msg
+2017-10-30 15:29:39,226-root-WARNING-logger warning msg
+2017-10-30 15:29:39,226-root-ERROR-logger error msg
+2017-10-30 15:29:39,226-root-CRITICAL-logger critical msg
+2017-10-30 15:29:49,132-root-DEBUG-logger debug msg
+2017-10-30 15:29:49,132-root-INFO-logger info msg
+2017-10-30 15:29:49,132-root-WARNING-logger warning msg
+2017-10-30 15:29:49,132-root-ERROR-logger error msg
+2017-10-30 15:29:49,132-root-CRITICAL-logger critical msg
+2017-10-30 15:31:09,229-DEBUG-logger debug msg
+2017-10-30 15:31:09,230-INFO-logger info msg
+2017-10-30 15:31:09,230-WARNING-logger warning msg
+2017-10-30 15:31:09,230-ERROR-logger error msg
+2017-10-30 15:31:09,230-CRITICAL-logger critical msg
+2017-10-30 15:31:17,249-root-DEBUG-logger debug msg
+2017-10-30 15:31:17,249-root-INFO-logger info msg
+2017-10-30 15:31:17,249-root-WARNING-logger warning msg
+2017-10-30 15:31:17,249-root-ERROR-logger error msg
+2017-10-30 15:31:17,249-root-CRITICAL-logger critical msg
+Mon, 30 Oct 2017 15:33:47-root-DEBUG-logger debug msg
+Mon, 30 Oct 2017 15:33:47-root-INFO-logger info msg
+Mon, 30 Oct 2017 15:33:47-root-WARNING-logger warning msg
+Mon, 30 Oct 2017 15:33:47-root-ERROR-logger error msg
+Mon, 30 Oct 2017 15:33:47-root-CRITICAL-logger critical msg
+2017/10/d 15:34:13-root-DEBUG-logger debug msg
+2017/10/d 15:34:13-root-INFO-logger info msg
+2017/10/d 15:34:13-root-WARNING-logger warning msg
+2017/10/d 15:34:13-root-ERROR-logger error msg
+2017/10/d 15:34:13-root-CRITICAL-logger critical msg
+2017/10/30 15:34:19-root-DEBUG-logger debug msg
+2017/10/30 15:34:19-root-INFO-logger info msg
+2017/10/30 15:34:19-root-WARNING-logger warning msg
+2017/10/30 15:34:19-root-ERROR-logger error msg
+2017/10/30 15:34:19-root-CRITICAL-logger critical msg
+2017/10/30 15:35:54-root-DEBUG-logger debug msg
+2017/10/30 15:35:54-root-INFO-logger info msg
+2017/10/30 15:35:54-root-WARNING-logger warning msg
+2017/10/30 15:35:54-root-ERROR-logger error msg
+2017/10/30 15:35:54-root-CRITICAL-logger critical msg

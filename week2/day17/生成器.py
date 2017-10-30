@@ -67,7 +67,7 @@ print(next(g)) #1   也不再内存中
 #send方法  yield最重要的意义是以后学协程
 def bar():
     print('ok1')
-    count = yield 1  #
+    count = yield 1  #˙
     print(count)
     print('ok2')
     yield 2
@@ -78,3 +78,24 @@ b.send(None)# 等于next(b)
 b.send('eee')#也会执行,他会给yield前面变量赋值
 # 第一次send前,如果没有next,只能传一个send(None)
 # 先执行yield 后赋值11
+print('下面的')
+
+def fib1(max):
+    n,a,b = 0,0,1
+    while n < max:
+        #print(b)
+        yield  b
+        a,b = b,a+b
+        n += 1
+
+    return 'done'
+
+g = fib1(7)
+while True:
+     try:
+         x = next(g)  #
+         print('g:', x)
+     except StopIteration as e:
+         print('Generator return value:', e.value)
+         break
+
