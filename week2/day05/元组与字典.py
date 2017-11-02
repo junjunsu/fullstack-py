@@ -66,3 +66,8 @@ dic4['host1'][0] = 333
 dic5 = {1:'444',2:'888',5:'666',4:'777'}
 res = sorted(dic5.items())
 print(res)
+
+#额外补充
+dict = {"name":"haha","age":10}
+print(dict.get('name'))
+print(dict.get('hobby','haha1'))  #没有的话可以给个默认值
