@@ -52,8 +52,8 @@ import re
 
 #结论 : +等于 (1,正无穷)   *代表 (0,正无穷) ?代表(0,1)  推荐这三种,少用{}
 # []   字符集:  或的意思
-#res = re.findall('a[c,d]x','adx')  #匹配c或者d
-#res = re.findall('[a-z]','adx') #['a', 'd', 'x'] 或的意思就是一个 所以  a满足b也满足c也满足匹配结果
+#res = re.findall('a[cd]x','acx')  #匹配c或者d
+#res = re.findall('[a-z]','adx') #['a', 'd ', 'x'] 或的意思就是一个 所以  a满足b也满足c也满足匹配结果
 #(2) 取消元字符的特殊功能   但是有三个例外  (\ ^ -)
 # res = re.findall('[?,.,w,*,]','?w,*.')
 # print(res)
@@ -149,21 +149,84 @@ import re
 # print(re.split('[j,s]','1sdjksal'))  #1 d k al #首先对j进行一个分割,结果是 1,s,d, ,ksal 在对s去分割 1 d k al  ************
 # print(re.split('[j,s]','sdjksal'))  #   ['', 'd', 'k', 'al'] ************
 
-#5.sub() 替换
+#5.sub() 替换 #其中第三个参数替换多少次,默认替换全部符合的内容
 #print(re.sub('a..x','s...b','hjssalexxfkssd')) #hjsss..bxfkssd
 
+# ret=re.sub('\d','abc','alvin5yuan6',1)
+# print(ret)#alvinabcyuan6
+
+# ret=re.subn('\d','abc','alvin5yuan6')  #会告诉你替换了多少次 一共替换2次
+# print(ret)#('alvinabcyuanabc', 2)
+
 #6.re.compile
-#这个方法是Pattern类的工厂方法,用于将字符串形式的正则表达式编译为Pattern对象,第二个参数flag是匹配模式,取值可以使用按位或运算符'|',表示同时生效,比如re.I | re.M
+#这个方法是Pattern类的工厂方法,用于将字符 串形式的正则表达式编译为Pattern对象,第二个参数flag是匹配模式,取值可以使用按位或运算符'|',表示同时生效,比如re.I | re.M
 #可以把正则表达式编译成一个正则表达式对象,可以把那些经常使用的正则表达式编译成正则表达式对象,这样可以提高一定的效率,
 
-#多次用有一定的效率
-print(re.findall('\.com','adadjad.comasdadsad'))
 
-obj = re.compile('\.com')
-print(obj.findall('sadasdjk.comsad'))  #其实上下两个效率一样,只有在多次调用obj的时候,才能看出效率之分
+#多次用有一定的效率
+#print(re.findall('\.com','adadjad.comasdadsad'))
+
+#obj = re.compile('\.com')
+#print(obj.findall('sadasdjk.comsad'))  #其实上下两个效率一样,只有在多次调用obj的时候,才能看出效率之分
+
+# ret=re.findall('abc*?','abcccccc') #取消贪婪匹配
+# print(ret)
+
+
+#7. 迭代对象
+# ret = re.finditer('\d', 'ds3sy4784a')  #返回一个迭代对象
+# print(ret)  # <callable_iterator object at 0x10195f940>
+#
+# print(next(ret).group()) #3
+# print(next(ret).group()) #4
+
+# s = re.findall('www.(\w+).com','www.baidu.com')
+# print(s)  #['baidu'] #职匹配组里面的内容
+#
+# #取消组的权限 在()里面加入?:
+# s = re.findall('www.(?:\w+).com','www.baidu.com')
+# print(s) #['www.baidu.com']
+
+
+
+
+
 
 #作业:
-#1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )
+
+
+
+
+#按括号分组,里面还有括号的继续分组
+
+# () #分组
+#print(re.findall('(as)+','sdjsadasasas')) #['as']
+#print(re.search('(as)+','sdjsadasas').group())#匹配前面这个组的内容 #asas
+#print(re.search('(as)|3','as').group())#匹配前面这个组的内容 #as
+
+
+# 实现加减乘除及括号优先级解析
+# 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，
+# 必须自己解析里面的(),+,-,*,/符号和公式(不能调用eval等类似功能偷懒实现)，运算后得出结果，结果必须与真实的计算器所得出的结果一致
+
+
+
+
+
+
+
+
+
+
+# print(re.search("(abc){2}a(123|456)c", "abcabca456c").group())
+#
+# res = re.search("(?P<province>[0-9]{4})(?P<city>[0-9]{2})(?P<birthday>[0-9]{4})","371481199306143242").groupdict("city")
+# print(res)
+
+#结果{'province': '3714', 'city': '81', 'birthday': '1993'}
+
+
+
 
 
 
