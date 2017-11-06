@@ -1,0 +1,26 @@
+├─bin
+│  ├─__init__.py
+│  └─atm.py
+├─conf
+│ ├─__init__.py
+│ └─settings.py
+├─core
+│ ├─__init__.py
+│ ├─accounts.py
+│ ├─auth.py
+│ ├─db_handler.py
+│ ├─logger.py
+│ ├─main.py
+│ └─transaction.py
+├─db
+│  ├─__init__.py
+│  └─account_sampile.py
+│  ├─accounts
+│  │  └─1234.json
+├─dir_tree
+├─log
+│  ├─__init__.py
+│  ├─access.log
+│  └─transactions.log
+├─READ
+└─README

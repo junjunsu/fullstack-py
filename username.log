@@ -1,0 +1,7 @@
+2017-11-04 21:46:51,260 - root - INFO - [{"expend": [{"id": 1, "price": 1000, "stock_num": 100, "shop_name": "\u76f8\u673a"}, {"id": 2, "price": 1200, "stock_num": 100, "shop_name": "\u51b0\u7bb1"}], "expend_total_money": 1}]
+2017-11-04 21:49:08,145 - root - INFO - {"expend": [{"id": 1, "stock_num": 100, "price": 1000, "shop_name": "\u76f8\u673a"}, {"id": 2, "stock_num": 100, "price": 1200, "shop_name": "\u51b0\u7bb1"}], "expend_total_money": 0}
+2017-11-04 21:52:37,156 - root - INFO - {"expend": [{"shop_name": "\u76f8\u673a", "stock_num": 100, "price": 1000, "id": 1}, {"shop_name": "\u51b0\u7bb1", "stock_num": 100, "price": 1200, "id": 2}], "expend_total_money": 0}
+2017-11-04 21:54:41,447 - root - INFO - {"expend": [{"shop_name": "\u76f8\u673a", "price": 1000, "id": 1, "stock_num": 100}, {"shop_name": "\u51b0\u7bb1", "price": 1200, "id": 2, "stock_num": 100}], "expend_total_money": 0}
+2017-11-04 21:55:53,833 - root - INFO - {"expend_total_money": 0, "expend": [{"stock_num": 100, "shop_name": "\u76f8\u673a", "price": 1000, "id": 1}, {"stock_num": 100, "shop_name": "\u51b0\u7bb1", "price": 1200, "id": 2}]}
+2017-11-04 21:56:27,590 - root - INFO - {"expend": [{"stock_num": 100, "price": 1000, "shop_name": "\u76f8\u673a", "id": 1}, {"stock_num": 100, "price": 1200, "shop_name": "\u51b0\u7bb1", "id": 2}], "expend_total_money": 0}
+2017-11-04 21:57:59,172 - root - INFO - {"expend": [{"id": 1, "shop_name": "\u76f8\u673a", "stock_num": 100, "price": 1000}, {"id": 2, "shop_name": "\u51b0\u7bb1", "stock_num": 100, "price": 1200}], "expend_total_money": 0}
