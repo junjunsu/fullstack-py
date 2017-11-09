@@ -85,7 +85,7 @@ class Person:
 	# 加装饰器
 	# sefl不必须加
      #   调用直接通过类调用
-     #  有点: 静态方法不需要创建对象
+     #  优点: 静态方法不需要创建对象
 	@staticmethod
 	def foo(name,age,hobby):
 		print(name,age,hobby)
@@ -118,8 +118,8 @@ class Person:
 	def pro3(self):
 		print('我通过fdel调用')
 		del self.age
-
-	per = property(fget=pro1, fset=pro2, fdel=pro3, doc='message')
+	#第二种方式
+	per = property(fget=pro1, fset=pro2, fdel=pro3,doc = 'message')
 
 
 
@@ -150,6 +150,8 @@ obj = Person('小红',17)
 # print(obj.per)
 # del obj.per
 # print(obj.per) #AttributeError: 'Person' object has no attribute 'age'
+#print(obj.per.__doc__) #不管用
+
 
 
 
@@ -183,6 +185,8 @@ class Goods(object):
 # print(obj.price)  #160      # 获取商品价格
 #del obj.price     # 删除商品原价
 #print(obj.price)  #报错,因为已经删除了
+
+
 
 
 

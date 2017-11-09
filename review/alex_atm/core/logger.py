@@ -33,30 +33,3 @@ def logger(logger_type):
 	logger.error('error message')
 	logger.critical('critical message')'''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
