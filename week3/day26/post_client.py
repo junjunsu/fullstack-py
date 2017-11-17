@@ -1,27 +1,30 @@
-import socket
+import socket,os
 
 sk = socket.socket()
-print(sk)
-address = ('127.0.0.1',8001)
+address = ('127.0.0.1',8002)
 sk.connect(address)
 
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 talk_flag = False
 
 while True:
-	inp = input('>>>')
-	if inp == '.':
-		break
+	inp = input('>>>').strip() #post | 1.jpg  一会试一下input是否有空格
+	cmd,path = inp.split('|')
+	path = os.path.join(BASE_DIR,path)
+	filename = os.path.basename(path)
+	file_size = os.stat(path).st_size
+	#一起打包传过去(还可能加目标位置)
+	file_info = 'post|%s|%s'%(filename,file_size)
+	sk.sendall(bytes(file_info,'utf8'))
+	f =  open(path,'rb')#rb 是已bytes读bytes写
+	has_sent= 0
+	while has_sent != file_size: #判断是否上传完
+		data = f.read(1024) #一段一段发 1024字节
+		sk.sendall(data)
+		has_sent += len(data)
+	f.close()
+	print('上传成功')
 
-	sk.send(bytes(inp,'utf8')) #int(
-	result_len = int(str(sk.recv(1024),'utf8')) #
-	sk.sendall(bytes('ok','utf8'))
-	#print(result_len,type(result_len))  #str 169
-	data = bytes()  #跟sum = 0 是一样的
-	while  len(data) != result_len:
-		recv = sk.recv(1024)
-		data += recv
-	print(str(recv, 'utf8'))
 sk.close()
 
 

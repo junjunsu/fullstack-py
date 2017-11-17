@@ -19,16 +19,16 @@ t2 = threading.Thread(target=bar,args=(2,))
 t1.start()
 t2.start()
 print('.................in the main')
-t1.join()
-t2.join()#t1,t2如果不运行结束,它不往下走
+t1.join()#t1如果不运行结束,它不往下走
+t2.join()#t2如果不运行结束,它不往下走
 end = time.time()
 print(end-begin)
 #cpu貌似在干两件事情,不是只能干一个活吗?
 #并发:
 #并行:真正意义上两件事情同时干,2个线程同时跑,2个cpu同时运算,没有任何时间差,遇到IO阻塞可以干点别的事
-#串行:cpu从上至下一次执行:花费时间长,c
+#串行:cpu从上至下一次执行:花费时间长,
 
-#通过解释器让os调用cpu去执行
+#线程通过解释器让os调用cpu去执行
 #多核cpu
 
 
@@ -40,8 +40,8 @@ print(end-begin)
 #切换,一人执行一会
 #执行了100条字节码
 #两个线程并发在跑
-#第一种情况:小A先执行,sleep了,能让cpu进行一个转换的过程
-#只有两个条件:
+
+#能让cpu进行一个转换的过程只有两个条件:
 #1:AB都有代码要跑,A执行一小段时间,在执行B,不可能一直照顾A
 #2:IO阻塞 :socket->accept ,recv  file->read,sleep相当于IO阻塞,当A执行中,CPU还没到切换时间呢,
 #A自己有个sleep了,CPU停止,执行B的,因为A有个IO阻塞,不用我cpu了去执行B的,B这执行如果也有IO阻塞,那我再执行别人的,

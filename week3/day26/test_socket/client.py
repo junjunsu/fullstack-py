@@ -1,38 +1,30 @@
-import socket
-
-#他不需要绑定,因为他是去连接绑定的端口号的,他是用户端,他只需去连接
+import socket,os,sys
 sk = socket.socket()
-print(sk)
-#server端的IP,端口
+#print(sk)
 address = ('127.0.0.1',8000)
 sk.connect(address)
 
-#data = sk.recv(1024) #这一次最大可以接收多少,以后就用1024
 
-#print(str(data,'utf8')) #需要对bytes类型进行解码
+talk_flag = False
 
-#recv也会阻塞住,连接之后,等着着s端发数据你不发数据我一直停着
-
-#英文跟utf8对应
-#汉字:需解码
-
-data = sk.send(bytes('hah','utf8'))
-
-
-
-
-#Traceback (most recent call last):
-#   File "/Users/sujunjun/PycharmProjects/fullstack_s2/week3/day26/server.py", line 98, in <module>
-#     data = sk.recv(1024)
-# OSError: [Errno 57] Socket is not connected
-
-#报上面这个错误是因为
-#必须用conn,
-
-#c端可能有多个,
+while not talk_flag:
+	inp = input('>>>')
+	if inp == '.':
+		talk_flag = True
+	else:
+		sk.send(bytes(inp,'utf8')) #空发送过去了,对方一看是空,会阻塞,知道你下次发一个值过来
+		#sk.send(bytes('yyy','utf8'))
+		data = sk.recv(1024)
+		print(str(data,'utf8'))
 
 
-sk.close() #这个通信关了
-#对象还是有的
-print(sk)
+sk.close()
+
+
+
+
+
+
+#不可以发空,发空相当于阻塞状态,是发送过去了,单recv看到你是个空,他不做任何处理,等待你下次发一个值过来在处理
+
 
