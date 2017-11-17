@@ -8,7 +8,7 @@ def add(n):
     print(sum)
 
 #add(50000000)
-#add(80000000) #25秒
+#add(80000000) #25秒  mac下9.5
 
 t1 = threading.Thread(target=add,args=(50000000,))
 t1.start()
@@ -17,7 +17,7 @@ t2.start()
 
 t1.join()
 t2.join()
-end = time.time() #36秒
+end = time.time() #36秒  10.11秒
 print(end - begin)
 #并行为什么比串行慢?
 #CPU切换消耗时间,当前状态需要保存住
