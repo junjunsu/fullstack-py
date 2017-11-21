@@ -1,4 +1,4 @@
-#信号量
+#信号量(就是一把锁)
 
 '''
 信号量:比如开100个线程只能有4个线程同时进入(不是真正的并行)
@@ -18,7 +18,7 @@ class myThread(threading.Thread):
             semaphore.release()
 if __name__=="__main__":
     #semaphore=threading.Semaphore(5)
-    semaphore=threading.BoundedSemaphore(5) #这个参数就是多少个线程同时进去
+    semaphore=threading.BoundedSemaphore(5) #这个参数就是多少个线程同时进去(不是真正的同时)
     thrs=[]
     for i in range(100):
         thrs.append(myThread())
