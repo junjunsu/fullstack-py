@@ -25,5 +25,5 @@ print(time.strftime('%Y-%m-%d %H:%M:%S',struct_time))
 
 #datetime
 import datetime
-print(datetime.datetime.now()) #2017-10-26 16:54:31.671700
+print(datetime.datetime.now()) #2017-10-26 16:54:32.671700
 #print(datetime.datetime.) #时间相差多少天

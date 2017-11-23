@@ -89,7 +89,7 @@ Person()() #上下一样的
 # res = lambda a,b:a+b
 # print(res(1,3))
 def p(str):
-    print('\033[31;1m%s\033[0m'%(str))
+    print('\033[32;1m%s\033[0m'%(str))
 
 p('end')
 

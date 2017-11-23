@@ -52,7 +52,7 @@ def repay(acc_data):
 			if new_balance:
 				print('''\033[42;1mNew Balance:%s\033[0m''' % (new_balance['balance']))
 		else:
-			print('\033[31;1m[%s] is not a valid amount, only accept integer!\033[0m' % repay_amount)
+			print('\033[32;1m[%s] is not a valid amount, only accept integer!\033[0m' % repay_amount)
 
 		if repay_amount == 'b':
 			back_flag = True
@@ -78,7 +78,7 @@ def withdraw(acc_data):
 			if new_balance:
 				print('''\033[42;1mNew Balance:%s\033[0m''' % (new_balance['balance']))
 		else:
-			print('\033[31;1m[%s] is not a valid amount, only accept integer!\033[0m' % withdraw_amount)
+			print('\033[32;1m[%s] is not a valid amount, only accept integer!\033[0m' % withdraw_amount)
 		if withdraw_amount == 'b':
 			back_flag = True
 #转账
@@ -103,9 +103,9 @@ def transfer(acc_data):
 				if new_balance and new_trans_balance:
 					print('''\033[42;1mNew Balance:%s\033[0m''' % (new_balance['balance']))
 			else:
-				print('\033[31;1m[%s] is not a valid account_id, only accept integer!\033[0m' % trans_account_id)
+				print('\033[32;1m[%s] is not a valid account_id, only accept integer!\033[0m' % trans_account_id)
 		else:
-			print('\033[31;1m[%s] is not a valid amount, only accept integer!\033[0m' % trans_amount)
+			print('\033[32;1m[%s] is not a valid amount, only accept integer!\033[0m' % trans_amount)
 		option = input("返回请按b")
 		if option == 'b':
 			back_flag = True
@@ -115,7 +115,7 @@ def pay_check(acc_data):
 	back_flag = False
 	while not back_flag:
 		trans_data = accounts.print_account(acc_data['account_id'])
-		print('\033[31;1m['+trans_data+'\033[0m')
+		print('\033[32;1m['+trans_data+'\033[0m')
 		option = input("如果返回按b")
 		if option == 'b':
 			back_flag = True
@@ -175,7 +175,7 @@ def interactive(acc_data):
 			if res is True:
 				exit_flag = True
 		else:
-			print("\033[31;1mOption does not exist!\033[0m")
+			print("\033[32;1mOption does not exist!\033[0m")
 	else:
 		print("欢迎下次光临!")
 

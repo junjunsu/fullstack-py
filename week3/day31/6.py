@@ -58,7 +58,7 @@ if __name__ == '__main__':
 #
 #
 # def f(name):
-#     info('\033[31;1mfunction f\033[0m')
+#     info('\033[32;1mfunction f\033[0m')
 #     print('hello', name)
 #
 # #if __name__ == '__main__':

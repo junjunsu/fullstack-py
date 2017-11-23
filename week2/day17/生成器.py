@@ -1,5 +1,6 @@
 #s = [x*2 for x in range(100)] #全扔进内存了,占用空间(不好)
 
+
 #s是厨师什么菜也没有,你什么时候想吃就调用,吃1调1,吃2调2,只能按顺序一个一个吃,不能跳着吃
 #生成器是一个可迭代对象(Iterable),可以用for循环遍历
 #s = (x*2 for x in range(5))  #想用的时候在进行调用  生成器
@@ -35,10 +36,11 @@ def foo():#它没有执行里面的代码
 
     #return None 他是是有的,只是没写
 g = foo()  #foo加了括号就变成了生成器对象 <generator object foo at 0x10c5c7af0>,
-# next(g)  #为什么没1,2 ,yield可以理解为return ,你需要打印
-# next(g)
+#next(g)  #为什么没1,2 ,yield可以理解为return ,你需要打印
+print(next(g))
+print(next(g))
 # next(g) #StopIteration 超过了他的迭代次数
-
+exit()
 # for i in foo():
 #     #while True:
 #         #next(foo())  #返回值被i拿到了

@@ -23,11 +23,11 @@ def acc_auth2(account , password):
 	if data['password'] == password:
 		exp_time_stamp = time.mktime(time.strptime(data['expire_date'],"%Y-%m-%d"))
 		if time.time() > exp_time_stamp:
-			print("\033[31;1mAccount [%s] has expired,please contact the back to get a new card!\033[0m" % account)
+			print("\033[32;1mAccount [%s] has expired,please contact the back to get a new card!\033[0m" % account)
 		else:
 			return data
 	else:
-		print("\033[31;1mAccount ID or password is incorrect!\033[0m")
+		print("\033[32;1mAccount ID or password is incorrect!\033[0m")
 
 
 def acc_login(user_data,log_obj):
