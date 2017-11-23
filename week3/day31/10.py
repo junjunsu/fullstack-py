@@ -1,3 +1,4 @@
+#coding:utf-8
 #进程池
 '''
 就是一个搬砖的过程,大家一块搬,开不起这么多消耗的时候,就控制一下跟线程池一样
@@ -8,25 +9,27 @@
 apply
 apply_async
 '''
-from  multiprocessing import Process, Pool
-import time
-
-
+from multiprocessing import Process, Pool
+import time,os
 def Foo(i):
+    print('Foo:', os.getpid())
     time.sleep(2)
     return i + 100
 
 
 def Bar(arg):
+    print('Bar:', os.getpid())
     print('-->exec done:', arg)
 
 
-pool = Pool(5)
-print(pool)  #<multiprocessing.pool.Pool object at 0x000000000263FE10>
-for i in range(10) :
-    #pool.apply_async(func=Foo, args=(i,), callback=Bar)
-    pool.apply(func=Foo, args=(i,))
+if __name__ == '__main__': #一定要加这个
+    pool = Pool()# 不写默认是 os.cpu_count()的数量
+    #print(pool)  #<multiprocessing.pool.Pool object at 0x000000000263FE10>
+    print('main:',os.getpid())
+    for i in range(10) :
+        pool.apply_async(func=Foo, args=(i,), callback=Bar)
+        #pool.apply(func=Foo, args=(i,))
 
-print('end')
-pool.join()
-pool.close()
+    print('end')
+    pool.close()
+    pool.join()
