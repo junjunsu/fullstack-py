@@ -19,7 +19,7 @@ class Producer(threading.Thread):
                 L.append(val)#获取到之后往这里面放值
                 lock_con.notify()#把wait对象激活(),它不会释放锁,起到通知的作用(下面必须加release)
                 lock_con.release()
-            time.sleep(3)
+            time.sleep(5)
 
 class Consumer(threading.Thread):
     def run(self):
