@@ -45,34 +45,5 @@ if __name__ == '__main__':
 	#多线程: 比如一个10 一个4,在串行时总共执行了14秒,在并行时总共执行10秒
 	#多线程程序总共执行了多少秒取决于最大的sleep, 提高了多少秒就是你覆盖的4秒,也就是提高了4秒
 
-#b 七里香 Begin listening to 七里香. Tue Nov 14 13:51:35 2017
-#b 阿甘Begin watching at the 阿甘正传! Tue Nov 14 13:51:35 2017
-#end 七里香end listening Tue Nov 14 13:51:37 2017
 
-#b 七里香 Begin listening to 七里香. Tue Nov 14 13:51:37 2017
-#end 七里香end listening Tue Nov 14 13:51:39 2017     -
-#end 阿甘 end watching Tue Nov 14 13:51:40 2017
-
-#begin 阿甘 Begin watching at the 阿甘正传! Tue Nov 14 13:51:40 2017
-
-#end 阿甘 end watching Tue Nov 14 13:51:45 2017
-#all over Tue Nov 14 13:51:45 2017
-
-
-#t1
-#b 七里香 Begin listening to 七里香. Tue Nov 14 13:51:35 2017 -
-
-#b 阿甘Begin watching at the 阿甘正传! Tue Nov 14 13:51:35 2017 -
-
-#end 七里香end listening Tue Nov 14 13:51:37 2017  -
-
-#b 七里香 Begin listening to 七里香. Tue Nov 14 13:51:37 2017 -
-
-#end 七里香end listening Tue Nov 14 13:51:39 2017 -
-#over
-#end 阿甘 end watching Tue Nov 14 13:51:40 2017
-
-#begin 阿甘 Begin watching at the 阿甘正传! Tue Nov 14 13:51:40 2017
-
-#end 阿甘 end watching Tue Nov 14 13:51:45 2017
 

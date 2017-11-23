@@ -32,8 +32,13 @@
 #例子 py3中
 #print(b'yuan'+'hao') #TypeError: can't concat bytes to str 进行了严格区分 bytes和unicode
 print(type('str'))
-str
-
+import sys
+A = '袁浩1a'
+B = '袁浩2b'
+C = '袁浩3c'
+#sys.stdout.write(str(A) + '\n')
+sys.stdout.write(' '.join(map(str, [A, B, C])) + '\n')
+print A,B,C
 
 
 
