@@ -23,9 +23,9 @@ if __name__ == '__main__':
             p_list.append(p)
         for res in p_list:
             res.join()
+        print( d, '---', len( d ) )
+        print( l, '---', len( l ) )#在子进程里面添加数据,在主进程里面获取
 
-        print(d)
-        print(l)  #在子进程里面添加数据,在主进程里面获取
 
 #rabitMQ =>
 #微博特征: 他是他的粉丝 ,他也是ta的粉丝, 最后他发了消息,他们两都应该收到

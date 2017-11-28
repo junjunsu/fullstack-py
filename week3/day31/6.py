@@ -2,11 +2,11 @@
 
 
 #函数方式创建多进程
-from multiprocessing import Process
+from multiprocessing import Process,current_process
 import time
 def f(name):
     time.sleep(1)
-    print('hello', name,time.ctime())
+    print('hello', name,time.ctime(),current_process())
 
 if __name__ == '__main__':
     p_list=[]

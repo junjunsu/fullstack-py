@@ -28,6 +28,9 @@ sk.bind(address)  #必须是元组 ,这样就绑定了IP地址与端口
 
 sk.listen(3) #最大能排3个人等着,如果这时有第四个人去连接他会报错 , 意味着:决定server端可容纳多少个排队人数
 
+#sk.setblocking() #决定你是不是阻塞的,默认是阻塞IO(也就是遇到accept,recv都会阻塞住,如果设置成非阻塞的话,name他就会直接过,就是说有数据他就直接拿过来,没有的话认为返回一个错误,继续往下走),
+
+
 #accept阻塞:其实写里accept函数之后server端停在这里了,他会阻塞住,等待别人连接他,如果没人连接他,他一直不执行
 print('waiting........') #
 conn,addr = sk.accept() #他接收的只是client端的sk  已经停住了

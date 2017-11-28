@@ -4,22 +4,22 @@
 import gevent , time
 #下面任务流程:首先第一个函数的print,和第二个函数的print现出来,然后遇到sleep停住,过了1秒sleep结束,执行func2下面的,紧接着又过了1秒执行func1下面的
 #总共花了2秒钟,节约了1秒钟
-def func1():
-    print('\033[31;1m李闯在跟海涛搞...\033[0m',time.ctime())
+def func1(n):
+    print('\033[31;1m李闯在跟海涛搞...\033[0m',time.ctime(),n)
     gevent.sleep(2)#模拟IO阻塞的情况
     #time.sleep(2)#不能用time.sleep,因为time.sleep是cpu切换的,现在是一个线程切换不了
-    print('\033[31;1m李闯又回去跟继续跟海涛搞...\033[0m',time.ctime())
+    print('\033[31;1m李闯又回去跟继续跟海涛搞...\033[0m',time.ctime(),n)
 
 
-def func2():
-    print('\033[32;1m李闯切换到了跟海龙搞...\033[0m',time.ctime())
+def func2(n):
+    print('\033[32;1m李闯切换到了跟海龙搞...\033[0m',time.ctime(),n)
     gevent.sleep(1)
     #time.sleep(1)  # 不能用time.sleep,因为time.sleep是cpu切换的
-    print('\033[32;1m李闯搞完了海涛，回来继续跟海龙搞...\033[0m',time.ctime())
+    print('\033[32;1m李闯搞完了海涛，回来继续跟海龙搞...\033[0m',time.ctime(),n)
 
 
 gevent.joinall([
-    gevent.spawn(func1), #生产/激活的意思
-    gevent.spawn(func2),
+    gevent.spawn(func1,'www'), #生产/激活的意思
+    gevent.spawn(func2,'zzzz'),
     # gevent.spawn(func3),
 ])

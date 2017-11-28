@@ -1,5 +1,6 @@
 #-*-coding:utf-8-*-
 #socketserver下的协程
+#通过gevent实现单线程下的多socket并发
 import sys
 import socket
 import time
@@ -16,7 +17,7 @@ def server(port):
     s.listen(500)
     while True:
         cli, addr = s.accept()
-        gevent.spawn(handle_request, cli)
+        gevent.spawn(handle_request, cli) #cli就是conn   ,就是给handle_request这个函数传的值
 
 
 def handle_request(conn):
