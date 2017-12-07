@@ -30,6 +30,7 @@ def consumer(name):
 
 def producer():
     next(con)
+    #con.send(None)
     next(con2)
     n = 0
     while n < 5:

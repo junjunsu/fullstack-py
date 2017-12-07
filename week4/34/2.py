@@ -20,12 +20,12 @@ IO多路复用
 '''
 #阻塞IO
 #recvfrom 是用来发系统调用的谁来发?
-import socket
-sk = socket.socket()
-sk.bind()
-sk.listen(3)
-conn,address = sk.accept() #他会发系统调用
-conn.recv() #他会发系统调用
+# import socket
+# sk = socket.socket()
+# sk.bind()
+# sk.listen(3)
+# conn,address = sk.accept() #他会发系统调用
+# conn.recv() #他会发系统调用
 
 #accept在这里一旦执行就会发系统调用,发过去之后OS就会做2件事情,(1)等待数据(2)转移数据
 #转移好之后,这个数据就传过来了,整个过程然后会有一个接收,conn,addr,(这两个东西之后OS把数据转移到我用户区,我才能去用,这个过程才叫结束)

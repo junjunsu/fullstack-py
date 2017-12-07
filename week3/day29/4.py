@@ -94,3 +94,9 @@ print(q.get()) #xiaojun3
 print(q.get()) #xiaojun2
 print(q.get()) #xiaojun1
 print(q.get()) # 空
+
+#用户认证:密文
+#多用户登录 :并发现象 socketserver
+#上传到server的哪一个文件夹下,(client,server各有自己的home 目录)
+#磁盘配额:判断家目录和文件夹大小,超过不让上传(os模块)
+#
