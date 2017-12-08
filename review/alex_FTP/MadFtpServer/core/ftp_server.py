@@ -26,8 +26,8 @@ class FTPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         while True:
             self.data = self.request.recv(1024).strip()
-            print(self.client_address[0])
-            print(self.data)
+            print(self.client_address[0])#127.0.0.1
+            print(self.data) #b'{"password": "11", "action": "auth", "username": "11"}'
             if not self.data:
                 print("client closed...")
                 break
@@ -58,6 +58,7 @@ class FTPHandler(socketserver.BaseRequestHandler):
 
     def _auth(self,*args,**kwargs):
         data = args[0]
+        print('_auth',data)
         if data.get("username") is None or data.get("password") is None:
             self.send_response(252)
 
@@ -100,14 +101,15 @@ class FTPHandler(socketserver.BaseRequestHandler):
         cmd_res = subprocess.getstatusoutput(cmd)
         return cmd_res
 
-    def _change_dir(self, *args,**kwargs):
+    def _change_dir(self, *args,**kwargs):#
         """change dir"""
-        #print( args,kwargs)
+        #print( args,kwargs)#({'action': 'change_dir', 'path': ''},) {}
+
         if args[0]:
             dest_path = "%s/%s" % (self.current_dir,args[0]['path'] )
         else:
             dest_path = self.home_dir
-        #print("dest path",dest_path)
+        print("dest path",dest_path)
 
         real_path = os.path.realpath(dest_path)
         print("readl path ", real_path)
@@ -119,17 +121,17 @@ class FTPHandler(socketserver.BaseRequestHandler):
             else:
                 self.send_response(259)
         else:
-            print("has no permission....to access ",real_path)
+            print("has no permission....to access ",real_path)  #不是以自己的home目录开头的不允许进入
             current_relative_dir = self.get_relative_path(self.current_dir)
             self.send_response(260, {'current_path': current_relative_dir})
 
     def get_relative_path(self,abs_path):
         """return relative path of this user"""
-        relative_path = re.sub("^%s"%settings.BASE_DIR, '', abs_path)
+        relative_path = re.sub("^%s"%settings.BASE_DIR, '', abs_path) #获取相对路径
         # if not relative_path: #means the relative path equals to home dir
         #     relative_path = abs_path
-        #
-        print(("relative path",relative_path,abs_path))
+        #print('base_dir:',settings.BASE_DIR) #/Users/sujunjun/PycharmProjects/fullstack_s2/review/alex_FTP/MadFtpServer
+        #print(("relative path",relative_path,abs_path))
         return relative_path
 
 
@@ -158,10 +160,11 @@ class FTPHandler(socketserver.BaseRequestHandler):
                     self.request.send(line)
                     md5_obj.update(line)
                 else:
-                    file_obj.close()
                     md5_val = md5_obj.hexdigest()
-                    self.send_response(258,{'md5':md5_val})
+                    print(md5_val)
+                    self.send_response(258,data={'md5':md5_val})
                     print("send file done....")
+                    file_obj.close()
             else:
                 for line in file_obj:
                     self.request.send(line)

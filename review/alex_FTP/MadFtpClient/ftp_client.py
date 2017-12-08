@@ -11,7 +11,8 @@ import os ,json
 import optparse
 import getpass
 import hashlib
-import sys 
+import sys
+import re
 
 STATUS_CODE  = {
     250 : "Invalid cmd format, e.g: {'action':'get','filename':'test.py','size':344}",
@@ -51,7 +52,6 @@ class FTPClient(object):
         elif options.username is None and options.password is None:
             pass
         else:
-            print(11)
             #options.username is None or options.password is None:
             exit("Err: username and password must be provided together..")
 
@@ -85,7 +85,7 @@ class FTPClient(object):
         data = {'action':'auth',
                 'username':user,
                 'password':password}
-        self.sock.send(json.dumps(data).encode())
+        self.sock.send(json.dumps(data).encode()) #转成bytes字节 (发送字典数据可以通过dumps,在转化成bytes进行发送)
         response = self.get_response()
 
         if response.get('status_code') == 254:
@@ -107,11 +107,11 @@ class FTPClient(object):
     def interactive(self):
         if self.authenticate():
             print("---start interactive with u...")
-            self.terminal_display = "[%s]$:"%self.user
-            while True:
+            self.terminal_display = "[%s]$:"%self.user #[alex]$:
+            while True: #验证完毕,开始执行命令
                 choice = input(self.terminal_display).strip()
                 if len(choice) == 0:continue
-                cmd_list = choice.split()
+                cmd_list = choice.split() #['ls']
                 if hasattr(self,"_%s"%cmd_list[0]):
                     func = getattr(self,"_%s"%cmd_list[0])
                     func(cmd_list)
@@ -150,6 +150,8 @@ class FTPClient(object):
             path = args[0][1]
         else:
             path = ''
+
+        print(path)
         data = {'action': 'change_dir','path':path}
         self.sock.send(json.dumps(data).encode())
         response = self.get_response()
@@ -196,7 +198,7 @@ class FTPClient(object):
 
 
     def _get(self,cmd_list):
-        print("get--",cmd_list)
+        print("get--",cmd_list) #['get', 'cc.py', '--md5']
         if len(cmd_list) == 1:
             print("no filename follows...")
             return
@@ -205,6 +207,7 @@ class FTPClient(object):
             'filename':cmd_list[1]
         }
         if self.__md5_required(cmd_list):
+            print('require md5')
             data_header['md5'] = True
 
         self.sock.send(json.dumps(data_header).encode())
@@ -233,13 +236,14 @@ class FTPClient(object):
                     file_obj.write(data)
                     md5_obj.update(data)
                 else:
-                    print("----->file recv done----")
-                    file_obj.close()
-                    md5_val = md5_obj.hexdigest()
                     md5_from_server = self.get_response()
+                    print("----->file recv done----")
+                    md5_val = md5_obj.hexdigest()
+                    print(md5_from_server)
                     if md5_from_server['status_code'] == 258:
-                        if md5_from_server['md5'] == md5_val:
+                        if md5_from_server['data']['md5'] == md5_val:
                             print("%s 文件一致性校验成功!" % base_filename)
+                    file_obj.close()
                     #print(md5_val,md5_from_server)
 
             else:

@@ -11,7 +11,9 @@ class ArvgHandler(object):
         # parser.add_option("-s","--host",dest="host",help="server binding host address")
         # parser.add_option("-p","--port",dest="port",help="server binding port")
         (options, args) = self.parser.parse_args()
+        #print(options,'---',args) # {} --- ['start']
         self.verify_args(options, args)
+
 
     def verify_args(self,options,args):
         '''校验并调用相应的功能'''
