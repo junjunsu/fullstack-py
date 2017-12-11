@@ -126,7 +126,7 @@ class FTPClient(object):
 
     def _help(self,*args,**kwargs):
         supported_actions = """
-        get filename    #get file from FTP server
+        get filename    #get file from FTP server  ex:get py.avi --md5
         put filename    #upload file to FTP server
         ls              #list files in current dir on FTP server
         pwd             #check current path on server
@@ -134,14 +134,13 @@ class FTPClient(object):
         """
         print(supported_actions)
 
-    def show_progress(self,total):
-        received_size = 0 
-        current_percent = 0 
+    def show_progress(self,total,received_size):
+        current_percent = 0
         while received_size < total:
              if int((received_size / total) * 100 )   > current_percent :
-                  print("#",end="",flush=True)
                   current_percent = int((received_size / total) * 100 )
-             new_size = yield 
+                  print("#%s"%current_percent,end="",flush=True)
+             new_size = yield
              received_size += new_size
 
     def _cd(self,*args,**kwargs):
@@ -214,17 +213,32 @@ class FTPClient(object):
         response = self.get_response()
         print(response)
         if response["status_code"] == 257:#ready to receive
-            self.sock.send(b'1')#send confirmation to server 
+            #self.sock.send(b'1')#send confirmation to server
             base_filename = cmd_list[1].split('/')[-1]
             received_size = 0
-            file_obj = open(base_filename,"wb")
+            exists_file = cmd_list[1]
+            print('exists_file',exists_file)
+
+            if os.path.isfile(exists_file):
+                #询问是否续传
+                user_select = input("这个文件本地已存在,是否继续下载?Y/N").strip()
+                if  user_select.upper() == 'Y':
+                    file_obj = open( base_filename, "ab" )
+                    file_size = os.path.getsize( exists_file )
+                    received_size += file_size
+                    self.sock.send( str(file_size).encode() )
+                else:
+                    file_obj = open( base_filename, "wb" )
+                    self.sock.send( '-1'.encode() )
+            else:
+                file_obj = open( base_filename, "wb" )
+                self.sock.send( '-1'.encode() )
             if response['data']['file_size'] == 0:
                 file_obj.close()
                 return
-
             if self.__md5_required(cmd_list):
                 md5_obj = hashlib.md5()
-                progress = self.show_progress(response['data']['file_size']) #generator
+                progress = self.show_progress(response['data']['file_size'],received_size) #generator
                 progress.__next__()
                 while received_size < response['data']['file_size']:
                     data = self.sock.recv(4096)
@@ -247,7 +261,7 @@ class FTPClient(object):
                     #print(md5_val,md5_from_server)
 
             else:
-                progress = self.show_progress(response['data']['file_size']) #generator
+                progress = self.show_progress(response['data']['file_size'],received_size) #generator
                 progress.__next__()
 
                 while received_size < response['data']['file_size']:

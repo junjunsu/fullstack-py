@@ -150,10 +150,14 @@ class FTPHandler(socketserver.BaseRequestHandler):
 
         if os.path.isfile(file_abs_path):
             file_obj = open(file_abs_path,"rb")
+            has_sent = 0
             file_size = os.path.getsize(file_abs_path)
             self.send_response(257,data={'file_size':file_size})
-            self.request.recv(1) #等待客户端确认
+            is_continue = self.request.recv(1024).decode('utf8') #等待客户端确认
+            if is_continue != '-1':
+                has_sent = int(is_continue)
 
+            file_obj.seek(has_sent)
             if data.get('md5'):
                 md5_obj = hashlib.md5()
                 for line in file_obj:
