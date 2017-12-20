@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>hello1
+    <div> hello2
+        <!--this:代指当前触发的标签对象,点击哪个标签就能拿到这个标签对象-->
+        <div onclick="show(this)" name = "123">123</div>
+        <div onclick="show(this)" name = "124">124</div>
+        <div onclick="show(this)" name = "125">125</div>
+        <div onclick="show(this)" name = "126">126</div>
+        <div onclick="show(this)" name = "127">127</div>
+        <div onclick="show(this)" name = "128">128</div>
+        <p>hrh</p>
+    </div>
+</div>
+</body>
+<script>
+    function show(self)
+    {
+        console.log(self.getAttribut e("name"))
+    }
+</script>
+</html>

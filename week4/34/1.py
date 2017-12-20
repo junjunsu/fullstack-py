@@ -1,6 +1,6 @@
 #IOtest
 
-#事件驱动->一种变成的范式->很重要
+#事件驱动->一种编程的范式->很重要
 #处理未知的状态,让他触发的事件->事件驱动->为了把cpu节省下来
 #跟协程本质一样:遇到IO阻塞,去执行其他的函数,把IO阻塞的这一部分cpu的时间腾出来,去干别的,这样效率就提高了
 #第二个图不是python的多线程,这个是完全意义上的并行多线程,比如说有三个cpu 各自执行各自的任务,彼此遇到io阻塞进行切换
@@ -15,8 +15,8 @@
 #等待具体的信息,这是进程的一个自身的表现,然后把cpu的权限交出去,阻塞的过程这个进程是没有cpu权限的,他是不占用cpu的,所以说这段时候把把权限交出去之后,然后就在这里停住,直到资源/数据过来之后,我有了一个更新之后,
 #客户端连接之后我接下来,重新获得cpu权限,然后往下走(所以这个过程要注意的是:1:这个阻塞是进程/程序本身发生的2,阻塞的状态不占cpu的,)
 # )
-import socket
-print(socket.socket())#<socket.socket fd=3, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 0)>
+#import socket
+#print(socket.socket())#<socket.socket fd=3, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 0)>
 #里面的fd就是文件描述符的意思
 
 #那么这个fd到底是什么呢,他跟什么有关系呢(他只是一个索引值,他是在内核区(也就是操作系统的一部分控件里面),他会维护一张表,这张表示跟你socket对象有关系的,你所有内容都在系统文件表里面存储着呢,所以咱们用socket进行数据传输的时候,都是围绕这这个文件描述符他在工作的
@@ -45,3 +45,4 @@ print(socket.socket())#<socket.socket fd=3, family=AddressFamily.AF_INET, type=S
 
 
 #
+

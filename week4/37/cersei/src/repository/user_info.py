@@ -41,6 +41,7 @@ class UserInfoRepository:
         """
         cursor.execute(sql, [username, password, ])
         result = cursor.fetchone()
+
         self.db_conn.close()
         return result
 

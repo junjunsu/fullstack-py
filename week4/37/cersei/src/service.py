@@ -19,7 +19,7 @@ def choice_menu():
         choice = int(choice)
         # 获取当前选中的权限
         permission = settings.current_user_permission_list[choice - 1]
-
+        print(settings.current_user_permission_list)
         # 获取模块路径
         module = permission['module']
         # 获取方法名
