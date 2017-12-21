@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" value="123">
+<input type="checkbox" name="hobby">
+<p>hello p</p>
+<div id="div1">
+    <p>hello p</p>
+    <p>hello pr</p>
+
+</div>
+
+
+<script src="jquery-3.1.1.js"></script>
+<script>
+
+//    console.log($(":text").val()); //val里面不加内容是代表取值,加内容代表设置值
+//    console.log($(":checkbox").val()); //如果checkbox不选的话,默认val值是on
+//    $(":text").val("456")
+var ele=$("p")
+//下面两个效果都一样发起者不一样 prepend是插到上面
+//$("#div1").append(ele) //在div里面从最后追加一个p标签;  //调用者是父级标签
+
+    ele.appendTo($("#div1")) //调用者是儿子
+
+    //after before 是同级(前后)插入关系 ,append和appendto是父子关系
+</script>
+</body>
+</html>
